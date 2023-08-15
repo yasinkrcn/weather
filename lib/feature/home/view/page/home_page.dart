@@ -1,7 +1,7 @@
 import 'package:weather/core/extension/timestamp_day_to_hours_and_minute_extension.dart';
 import 'package:weather/feature/home/view/widgets/weather_icon.dart';
+import 'package:weather/feature/home/view/widgets/weather_other_things.dart';
 import 'package:weather/feature/home/view_model/home_view_model.dart';
-
 import '../../../../core/_core_exports.dart';
 
 class HomePage extends StatelessWidget {
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                           ),
                           AppText(
                             "${weather.weather?[0].description}",
-                            style: TextStyle(fontSize: 24, color: AppColors.white, fontWeight: FontWeight.w500),
+                            style: TextStyle(fontSize: 30, color: AppColors.white, fontWeight: FontWeight.w500),
                           ),
                           AppSizedBox.h(16),
                           AppText(
@@ -58,17 +58,17 @@ class HomePage extends StatelessWidget {
                             style: TextStyle(fontSize: 28, color: AppColors.white, fontWeight: FontWeight.w500),
                           ),
                           AppSizedBox.h(16),
-                          AppText(
-                            "Gün Doğumu  ${IntToFormattedTime(weather.sys!.sunrise!).toFormattedTime()}",
-                            style: TextStyle(fontSize: 24, color: AppColors.white, fontWeight: FontWeight.w500),
-                          ),
-                          AppText(
-                            "Gün Batımı  ${IntToFormattedTime(weather.sys!.sunset!).toFormattedTime()}",
-                            style: TextStyle(fontSize: 24, color: AppColors.white, fontWeight: FontWeight.w500),
-                          ),
-                          AppText(
-                            "Güncelleme Tarihi  ${IntToFormattedTime(weather.dt!).toFormattedTime()}",
-                            style: TextStyle(fontSize: 24, color: AppColors.white, fontWeight: FontWeight.w500),
+                          Row(
+                            children: [
+                              AppText(
+                                "Güncelleme Tarihi : ${IntToFormattedTime(weather.dt!).toFormattedTime()}",
+                                style: TextStyle(fontSize: 16, color: AppColors.white, fontWeight: FontWeight.w500),
+                              ),
+                              AppSizedBox.w(12),
+                              GestureDetector(
+                                  onTap: () => homeViewModel.fetchLocationData(),
+                                  child: const Icon(Icons.refresh_rounded))
+                            ],
                           ),
                         ],
                       ),
@@ -76,9 +76,9 @@ class HomePage extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                        itemCount: deneme.length,
+                        itemCount: otherWeatherInfos.length,
                         itemBuilder: (context, index) {
-                          return deneme[index];
+                          return otherWeatherInfos[index];
                         },
                       )
                     ],
@@ -92,54 +92,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-List<Widget> deneme = [
-  Container(
-    margin: EdgeInsets.all(8),
-    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(Icons.sunny),
-        AppText("Rüzgar"),
-        AppText("54"),
-      ],
-    ),
-  ),
-  Container(
-    margin: EdgeInsets.all(8),
-    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(Icons.heat_pump),
-        AppText("Nem"),
-        AppText("54"),
-      ],
-    ),
-  ),
-  Container(
-    margin: EdgeInsets.all(8),
-    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(Icons.sunny),
-        AppText("Rüzgar"),
-        AppText("54"),
-      ],
-    ),
-  ),
-  Container(
-    margin: EdgeInsets.all(8),
-    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(Icons.sunny),
-        AppText("Rüzgar"),
-        AppText("54"),
-      ],
-    ),
-  ),
-];

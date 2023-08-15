@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weather/core/_core_exports.dart';
 import 'package:weather/core/constants/main_provider_list.dart';
 
