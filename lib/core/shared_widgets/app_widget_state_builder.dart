@@ -22,7 +22,11 @@ class AppWidgetBuilderByState<T> extends StatelessWidget {
       case UIStateStatus.idle:
         return idleWidget ?? const SizedBox.shrink();
       case UIStateStatus.loading:
-        return Center(child: loadingWidget ?? const CircularProgressIndicator.adaptive());
+        return Center(
+            child: loadingWidget ??
+                const CircularProgressIndicator.adaptive(
+                  backgroundColor: Colors.white,
+                ));
       case UIStateStatus.success:
         return builder(response.data as T);
       case UIStateStatus.error:

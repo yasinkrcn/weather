@@ -1,21 +1,21 @@
 import 'dart:convert';
 
 class ResponseModel {
-  final bool status;
-  final String responseCode;
-  final String message;
+  final String? cod;
+  final int? message;
+  final int? cnt;
 
   ResponseModel({
-    required this.status,
-    required this.responseCode,
-    required this.message,
+    this.cod,
+    this.message,
+    this.cnt,
   });
 
   factory ResponseModel.fromJson(String str) => ResponseModel.fromMap(json.decode(str));
 
   factory ResponseModel.fromMap(Map<String, dynamic> json) => ResponseModel(
-        status: json["status"] ?? false,
-        responseCode: json["response_code"] ?? "",
-        message: json["message"] ?? "",
+        cod: json["cod"],
+        message: json["message"],
+        cnt: json["cnt"],
       );
 }

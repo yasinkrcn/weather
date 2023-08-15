@@ -30,6 +30,8 @@ export 'package:weather/core/shared_widgets/custom_messenger.dart';
 export 'package:weather/feature/home/data/model/weather_model.dart';
 export 'package:weather/core/error/failure/failure.dart';
 export 'package:weather/core/constants/app_constants.dart';
+export 'package:weather/feature/home/data/model/weather_hourly_model.dart';
+export 'package:weather/feature/home/domain/entities/arguments/weather_arguments.dart';
 
 export 'package:weather/core/utils/remote_data_source/domain/entites/main_endpoint.dart';
 export 'package:weather/core/utils/remote_data_source/domain/repository/i_network_manager.dart';

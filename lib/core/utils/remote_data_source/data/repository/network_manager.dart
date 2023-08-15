@@ -36,7 +36,7 @@ class NetworkManager extends INetworkManager {
 
   Either<Failure, String> _handleResponse(Response response) {
     Failure result = ServiceFailure();
-    result.errorMessage = ResponseModel.fromJson(response.data).message;
+    // result.errorMessage = ResponseModel.fromJson(response.data).message.toString();
     switch (response.statusCode) {
       case HttpStatus.ok:
       case HttpStatus.created:

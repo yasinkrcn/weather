@@ -1,12 +1,11 @@
-import 'package:weather/feature/home/domain/entities/arguments/weather_arguments.dart';
-
 import '../../../core/_core_exports.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({
     required this.homeRepo,
   }) {
-    fetchLocationData();
+    fetchWeatherData();
+    fetchHourlyWeatherData();
   }
 
   HomeRepository homeRepo;
@@ -15,7 +14,7 @@ class HomeViewModel extends ChangeNotifier {
 
   UIState<WeatherModel> weatherData = UIState.idle();
 
-  Future<void> fetchLocationData() async {
+  Future<void> fetchWeatherData() async {
     weatherData = UIState.loading();
     notifyListeners();
     try {
@@ -31,5 +30,30 @@ class HomeViewModel extends ChangeNotifier {
         notifyListeners();
       });
     } catch (_) {}
+  }
+
+  UIState<HourlyWeatherModel> weatherHourlyData = UIState.idle();
+
+  Future<void> fetchHourlyWeatherData() async {
+    weatherData = UIState.loading();
+    notifyListeners();
+    try {
+      final res = await homeRepo.fetchHourlyWeatherDetail(weatherArguments: WeatherArguments(q: "milas"));
+
+      res.fold((l) {
+        weatherHourlyData = UIState.error(l.errorMessage);
+        notifyListeners();
+        showCustomMessenger(CustomMessengerState.ERROR, l.errorMessage);
+      }, (data) {
+        weatherHourlyData = UIState.success(data);
+
+        notifyListeners();
+      });
+    } catch (_) {}
+  }
+
+  Future<void> refreshPage() async {
+    await fetchWeatherData();
+    await fetchHourlyWeatherData();
   }
 }
