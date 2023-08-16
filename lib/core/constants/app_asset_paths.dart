@@ -17,6 +17,9 @@ class AssetPaths {
   String get sunrise => _toSVG("sunrise");
   String get sunset => _toSVG("sunset");
   String get windy => _toSVG("windy");
+  String get home => _toSVG("home");
+  String get search => _toSVG("search");
+  String get settings => _toSVG("settings");
 
   //*PNG
 

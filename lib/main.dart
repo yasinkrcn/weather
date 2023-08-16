@@ -1,9 +1,7 @@
-import 'package:google_fonts/google_fonts.dart';
 import 'package:weather/core/_core_exports.dart';
 import 'package:weather/core/constants/main_provider_list.dart';
-
 import 'package:weather/core/init/injection_container.dart' as locator;
-import 'package:weather/feature/home/view/page/home_page.dart';
+import 'package:weather/feature/bottom_nav_bar/view/_view_exports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(),
       onGenerateRoute: generateRoute,
       navigatorKey: GlobalContextKey.instance.globalKey,
-      home: HomePage(),
+      home: BottomNavigationPage(),
     );
   }
 }

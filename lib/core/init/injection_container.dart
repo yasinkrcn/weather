@@ -1,6 +1,6 @@
 import 'package:weather/core/utils/remote_data_source/data/repository/network_manager.dart';
 import 'package:weather/core/utils/remote_data_source/dio_manager.dart';
-import 'package:weather/core/utils/remote_data_source/domain/repository/i_network_manager.dart';
+import 'package:weather/feature/bottom_nav_bar/view_model/bottom_navigation_bar_view_model.dart';
 import 'package:weather/feature/home/data/repo/home_repo_impl.dart';
 import 'package:weather/feature/home/view_model/home_view_model.dart';
 
@@ -35,6 +35,8 @@ Future<void> init() async {
   //sl.registerLazySingleton<LoginViewModel>(() => LoginViewModel());
 
   sl.registerLazySingleton<HomeViewModel>(() => HomeViewModel(homeRepo: sl<HomeRepository>()));
+
+  sl.registerLazySingleton<BottomNavBarViewModel>(() => BottomNavBarViewModel());
 
   // sl.registerLazySingleton<RegisterViewModel>(
   //   () => RegisterViewModel(
