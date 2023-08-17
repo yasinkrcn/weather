@@ -1,6 +1,4 @@
 import 'package:flutter/rendering.dart';
-import 'package:weather/feature/search/view/widgets/weather_other_things.dart';
-
 import '../../../core/_core_exports.dart';
 
 class HomeViewModel extends ChangeNotifier {
@@ -60,18 +58,20 @@ class HomeViewModel extends ChangeNotifier {
     fetchHourlyWeatherData(query: query);
   }
 
-  ScrollController scrollController = ScrollController();
+  late ScrollController scrollController;
 
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
+  double previousScrollPosition = 0;
+
+  void disposeScrollController() {
+    scrollController.dispose;
   }
 
   void scrollListener() {
-    if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
-      print("true");
-    } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
-      print("false");
-    }
+    scrollController.addListener(() {
+      previousScrollPosition = scrollController.position.pixels;
+
+      // print(scrollController.position.pixels);
+      sl<BottomNavBarViewModel>().directionScroll(scrollController: scrollController);
+    });
   }
 }

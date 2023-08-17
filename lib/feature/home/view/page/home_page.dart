@@ -2,17 +2,34 @@ import 'package:weather/feature/home/view/widgets/shimmer_loading.dart';
 import 'package:weather/feature/search/view/widgets/weather_other_things.dart';
 import '../../../../core/_core_exports.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+
+    sl<HomeViewModel>().scrollController =
+        ScrollController(initialScrollOffset: sl<HomeViewModel>().previousScrollPosition);
+
+    sl<HomeViewModel>().scrollListener();
+  }
+
+  @override
+  void dispose() {
+    sl<HomeViewModel>().disposeScrollController();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     ScreenSize.init(context);
-    final ScrollController contollers = ScrollController();
-
-    contollers.addListener(() {
-      sl<BottomNavBarViewModel>().directionScroll(scrollController: contollers);
-    });
 
     return Consumer(
       builder: (context, HomeViewModel homeViewModel, child) {
@@ -21,7 +38,7 @@ class HomePage extends StatelessWidget {
             onRefresh: homeViewModel.refreshPage,
             child: AppBackground(
               child: SingleChildScrollView(
-                controller: contollers,
+                controller: homeViewModel.scrollController,
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
