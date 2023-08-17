@@ -1,3 +1,6 @@
+import 'package:flutter/rendering.dart';
+import 'package:weather/feature/search/view/widgets/weather_other_things.dart';
+
 import '../../../core/_core_exports.dart';
 
 class HomeViewModel extends ChangeNotifier {
@@ -14,16 +17,16 @@ class HomeViewModel extends ChangeNotifier {
 
   UIState<WeatherModel> weatherData = UIState.idle();
 
-  Future<void> fetchWeatherData() async {
+  Future<void> fetchWeatherData({String? query}) async {
     weatherData = UIState.loading();
     notifyListeners();
     try {
-      final res = await homeRepo.fetchWeatherInfo(weatherArguments: WeatherArguments(q: "milas"));
+      final res = await homeRepo.fetchWeatherInfo(weatherArguments: WeatherArguments(q: query ?? "milas"));
 
       res.fold((l) {
         weatherData = UIState.error(l.errorMessage);
         notifyListeners();
-        showCustomMessenger(CustomMessengerState.ERROR, l.errorMessage);
+        // showCustomMessenger(CustomMessengerState.ERROR, l.errorMessage);
       }, (data) {
         weatherData = UIState.success(data);
 
@@ -34,16 +37,16 @@ class HomeViewModel extends ChangeNotifier {
 
   UIState<HourlyWeatherModel> weatherHourlyData = UIState.idle();
 
-  Future<void> fetchHourlyWeatherData() async {
+  Future<void> fetchHourlyWeatherData({String? query}) async {
     weatherHourlyData = UIState.loading();
     notifyListeners();
     try {
-      final res = await homeRepo.fetchHourlyWeatherDetail(weatherArguments: WeatherArguments(q: "milas"));
+      final res = await homeRepo.fetchHourlyWeatherDetail(weatherArguments: WeatherArguments(q: query ?? "milas"));
 
       res.fold((l) {
         weatherHourlyData = UIState.error(l.errorMessage);
         notifyListeners();
-        showCustomMessenger(CustomMessengerState.ERROR, l.errorMessage);
+        // showCustomMessenger(CustomMessengerState.ERROR, l.errorMessage);
       }, (data) {
         weatherHourlyData = UIState.success(data);
 
@@ -52,8 +55,23 @@ class HomeViewModel extends ChangeNotifier {
     } catch (_) {}
   }
 
-  Future<void> refreshPage() async {
-    fetchWeatherData();
-    fetchHourlyWeatherData();
+  Future<void> refreshPage({String? query}) async {
+    fetchWeatherData(query: query);
+    fetchHourlyWeatherData(query: query);
+  }
+
+  ScrollController scrollController = ScrollController();
+
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  void scrollListener() {
+    if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
+      print("true");
+    } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+      print("false");
+    }
   }
 }

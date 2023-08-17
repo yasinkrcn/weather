@@ -1,6 +1,3 @@
-import 'package:weather/core/extension/timestamp_day_to_hours_and_minute_extension.dart';
-import 'package:weather/feature/home/view_model/home_view_model.dart';
-
 import '../../../../core/_core_exports.dart';
 
 class WeatherOtherThings extends StatelessWidget {
@@ -16,6 +13,13 @@ class WeatherOtherThings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(Provider.of<HomeViewModel>(context).weatherData.data?.main?.humidity);
+    List<Widget> otherWeatherInfos = [
+      weatherOtherThingsBoxOne(context),
+      weatherOtherThingsBoxOne(context),
+      weatherOtherThingsBoxOne(context),
+      weatherOtherThingsBoxOne(context),
+    ];
     return Container(
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(color: Colors.white.withOpacity(.6), borderRadius: BorderRadius.circular(16)),
@@ -41,36 +45,33 @@ class WeatherOtherThings extends StatelessWidget {
   }
 }
 
-List<Widget> otherWeatherInfos = [
-  WeatherOtherThings(
+Widget weatherOtherThingsBoxOne(BuildContext context) {
+  return WeatherOtherThings(
     asset: AssetPaths().humidity,
     text: "Nem",
-    info:
-        "%${Provider.of<HomeViewModel>(GlobalContextKey.instance.globalKey.currentState!.context).weatherData.data?.main!.humidity}",
-  ),
-  WeatherOtherThings(
+    info: "%${Provider.of<HomeViewModel>(context).weatherData.data?.main?.humidity}",
+  );
+}
+
+Widget weatherOtherThingsBoxTwo(BuildContext context) {
+  return WeatherOtherThings(
     asset: AssetPaths().windy,
     text: "Rüzgar",
-    info:
-        "${Provider.of<HomeViewModel>(GlobalContextKey.instance.globalKey.currentState!.context).weatherData.data?.wind?.speed} km/s",
-  ),
-  WeatherOtherThings(
+    info: "${Provider.of<HomeViewModel>(context).weatherData.data?.wind?.speed} km/s",
+  );
+}
+
+Widget weatherOtherThingsBoxThree(BuildContext context) {
+  return WeatherOtherThings(
       asset: AssetPaths().sunrise,
       text: "Gün\nDoğumu",
-      info: IntToFormattedTime(Provider.of<HomeViewModel>(GlobalContextKey.instance.globalKey.currentState!.context)
-              .weatherData
-              .data!
-              .sys!
-              .sunrise!)
-          .toFormattedTime()),
-  WeatherOtherThings(
+      info: IntToFormattedTime(Provider.of<HomeViewModel>(context).weatherData.data!.sys!.sunrise!).toFormattedTime());
+}
+
+Widget weatherOtherThingsBoxFour(BuildContext context) {
+  return WeatherOtherThings(
     asset: AssetPaths().sunset,
     text: "Gün\nBatımı",
-    info: IntToFormattedTime(Provider.of<HomeViewModel>(GlobalContextKey.instance.globalKey.currentState!.context)
-            .weatherData
-            .data!
-            .sys!
-            .sunset!)
-        .toFormattedTime(),
-  ),
-];
+    info: IntToFormattedTime(Provider.of<HomeViewModel>(context).weatherData.data!.sys!.sunset!).toFormattedTime(),
+  );
+}

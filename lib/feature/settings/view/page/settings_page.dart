@@ -5,6 +5,11 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold();
+    return AppScaffold(
+      body: AppBackground(
+          child: Column(
+        children: [],
+      )),
+    );
   }
 }

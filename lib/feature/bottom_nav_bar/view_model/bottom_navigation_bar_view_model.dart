@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:weather/feature/bottom_nav_bar/domain/entities/bottom_navigation_bar_state.dart';
 import 'package:weather/feature/bottom_nav_bar/domain/repo/bottom_navigation_info_repository.dart';
 
@@ -14,7 +15,7 @@ class BottomNavBarViewModel extends ChangeNotifier implements BottomNavigationIn
   double _scrollingReversePixel = 0.0;
   double _startReversePixel = 0.0;
 
-  void _showBottomBar() {
+  void showBottomBar() {
     if (!_isBottomBarVisible) {
       _isBottomBarVisible = true;
       isAppbarVisible = true;
@@ -24,7 +25,7 @@ class BottomNavBarViewModel extends ChangeNotifier implements BottomNavigationIn
     }
   }
 
-  void _hideBottomBar() {
+  void hideBottomBar() {
     if (_isBottomBarVisible) {
       _isBottomBarVisible = false;
       notifyListeners();
@@ -43,7 +44,7 @@ class BottomNavBarViewModel extends ChangeNotifier implements BottomNavigationIn
         scrollingPixel = 95.0;
       }
       if (scrollingPixel == 95.0) {
-        _hideBottomBar();
+        hideBottomBar();
       }
     }
   }
@@ -56,8 +57,23 @@ class BottomNavBarViewModel extends ChangeNotifier implements BottomNavigationIn
       if (_scrollingReversePixel >= 10) {
         _startPixel = 0.0;
         scrollingPixel = 0.0;
-        _showBottomBar();
+        showBottomBar();
       }
+    }
+  }
+
+  void directionScroll({
+    required ScrollController scrollController,
+  }) {
+    if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
+      //yukarı kaydırma
+
+      scrollUp(scrollController.position.pixels);
+    }
+    if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+      //aşağı kaydırma
+
+      scrollDown(scrollController.position.pixels);
     }
   }
 

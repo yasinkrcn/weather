@@ -32,11 +32,22 @@ export 'package:weather/core/error/failure/failure.dart';
 export 'package:weather/core/constants/app_constants.dart';
 export 'package:weather/feature/home/data/model/weather_hourly_model.dart';
 export 'package:weather/feature/home/domain/entities/arguments/weather_arguments.dart';
-
+export 'package:weather/core/utils/remote_data_source/data/repository/network_manager.dart';
+export 'package:weather/core/utils/remote_data_source/dio_manager.dart';
+export 'package:weather/feature/bottom_nav_bar/view_model/bottom_navigation_bar_view_model.dart';
+export 'package:weather/feature/home/data/repo/home_repo_impl.dart';
+export 'package:weather/feature/home/view_model/home_view_model.dart';
+export 'package:weather/feature/search/data/repo/search_repo_impl.dart';
 export 'package:weather/core/utils/remote_data_source/domain/entites/main_endpoint.dart';
 export 'package:weather/core/utils/remote_data_source/domain/repository/i_network_manager.dart';
-
+export 'package:weather/feature/search/domain/repo/search_repo.dart';
 export 'package:weather/feature/home/domain/repo/home_repo.dart';
+export 'package:weather/feature/search/domain/entities/arguments/search_arguments.dart';
+export 'package:weather/feature/home/view/widgets/weather_icon.dart';
+export 'package:weather/feature/search/view_model/search_view_model.dart';
+export 'package:weather/core/shared_widgets/app_background.dart';
+export 'package:weather/core/extension/timestamp_day_to_hours_and_minute_extension.dart';
+
 //* Keys
 export 'package:weather/core/keys/global_key.dart';
 

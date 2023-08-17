@@ -1,8 +1,4 @@
-import 'package:weather/core/utils/remote_data_source/data/repository/network_manager.dart';
-import 'package:weather/core/utils/remote_data_source/dio_manager.dart';
-import 'package:weather/feature/bottom_nav_bar/view_model/bottom_navigation_bar_view_model.dart';
-import 'package:weather/feature/home/data/repo/home_repo_impl.dart';
-import 'package:weather/feature/home/view_model/home_view_model.dart';
+import 'package:weather/feature/search/view_model/search_view_model.dart';
 
 import '../_core_exports.dart';
 
@@ -30,23 +26,13 @@ Future<void> init() async {
   //Repositories
 
   sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl());
+  sl.registerLazySingleton<SearchRepository>(() => SearchRepositoryImpl());
 
   //ViewModels
   //sl.registerLazySingleton<LoginViewModel>(() => LoginViewModel());
 
-  sl.registerLazySingleton<HomeViewModel>(() => HomeViewModel(homeRepo: sl<HomeRepository>()));
-
   sl.registerLazySingleton<BottomNavBarViewModel>(() => BottomNavBarViewModel());
 
-  // sl.registerLazySingleton<RegisterViewModel>(
-  //   () => RegisterViewModel(
-  //     authRepository: sl<AuthRepository>(),
-  //   ),
-  // );
-  // sl.registerLazySingleton<SplashViewModel>(
-  //   () => SplashViewModel(
-  //     getDataFromKey: sl<GetDataFromKey>(),
-  //     saveDataFromKey: sl<SaveDataFromKey>(),
-  //   ),
-  // );
+  sl.registerLazySingleton<HomeViewModel>(() => HomeViewModel(homeRepo: sl<HomeRepository>()));
+  sl.registerLazySingleton<SearchViewModel>(() => SearchViewModel(searchRepo: sl<SearchRepository>()));
 }

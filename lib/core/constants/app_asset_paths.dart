@@ -24,6 +24,8 @@ class AssetPaths {
   //*PNG
 
   //*JSON
+  String get notFound => _toJSON("not_found");
+  String get searchSomething => _toJSON("search_something");
 
   //*GIF
 }

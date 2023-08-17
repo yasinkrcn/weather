@@ -19,7 +19,7 @@ class DioManager {
 
     dio.options.responseType = ResponseType.plain;
 
-    dio.interceptors.add(LogInterceptor(requestBody: true, error: true, responseBody: true));
+    // dio.interceptors.add(LogInterceptor(requestBody: true, error: true, responseBody: true));
 
     return dio;
   }

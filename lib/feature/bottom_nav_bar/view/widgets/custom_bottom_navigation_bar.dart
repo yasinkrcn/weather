@@ -17,7 +17,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           width: ScreenSize().getWidth(1),
           curve: Curves.linear,
           duration: const Duration(
-            milliseconds: 2500,
+            milliseconds: 250,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
