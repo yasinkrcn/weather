@@ -1,0 +1,18 @@
+{
+    "home": "Ana Sayfa",
+    "search": "Ara",
+    "settings": "Ayarlar",
+    "update_time": "Güncelleme Tarihi",
+    "humidity": "Nem",
+    "wind": "rüzgar",
+    "sun_rise": "Gün Doğumu",
+    "sun_set": "Gün Batımı",
+    "language": "Dil",
+    "select_language": "Dil Seçiniz",
+    "log_out": "Çıkış Yap",
+    "yes": "Evet",
+    "no": "Hayır",
+    "username": "Kullanıcı Adı",
+    "do_you_want_to_exit_the_application": "Uygulamadan çıkmak istiyor musunuz",
+    "continue": "Devam Et"
+}

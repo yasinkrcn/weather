@@ -1,4 +1,5 @@
 import 'package:weather/feature/search/view_model/search_view_model.dart';
+import 'package:weather/feature/settings/view_model/language_view_model.dart';
 
 import '../_core_exports.dart';
 
@@ -32,6 +33,7 @@ Future<void> init() async {
   //sl.registerLazySingleton<LoginViewModel>(() => LoginViewModel());
 
   sl.registerLazySingleton<BottomNavBarViewModel>(() => BottomNavBarViewModel());
+  sl.registerLazySingleton<LanguageViewModel>(() => LanguageViewModel());
 
   sl.registerLazySingleton<HomeViewModel>(() => HomeViewModel(homeRepo: sl<HomeRepository>()));
   sl.registerLazySingleton<SearchViewModel>(() => SearchViewModel(searchRepo: sl<SearchRepository>()));

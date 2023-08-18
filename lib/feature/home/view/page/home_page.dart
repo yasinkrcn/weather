@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:weather/feature/home/view/widgets/shimmer_loading.dart';
 import 'package:weather/feature/search/view/widgets/weather_other_things.dart';
 import '../../../../core/_core_exports.dart';
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                                   Row(
                                     children: [
                                       AppText(
-                                        "Güncelleme Tarihi : ${IntToFormattedTime(weather.dt!).toFormattedTime()}",
+                                        "${LangCode().updateTime.tr()} : ${IntToFormattedTime(weather.dt!).toFormattedTime()}",
                                         style: const TextStyle(
                                             fontSize: 16, color: AppColors.white, fontWeight: FontWeight.w500),
                                       ),

@@ -48,6 +48,8 @@ export 'package:weather/feature/search/view_model/search_view_model.dart';
 export 'package:weather/core/shared_widgets/app_background.dart';
 export 'package:weather/core/extension/timestamp_day_to_hours_and_minute_extension.dart';
 
+export 'package:weather/core/constants/localization/lang_code.dart';
+
 //* Keys
 export 'package:weather/core/keys/global_key.dart';
 

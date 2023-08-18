@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../../core/_core_exports.dart';
 
 class SearchPage extends StatelessWidget {
@@ -18,7 +18,7 @@ class SearchPage extends StatelessWidget {
                 children: [
                   AppTextFormField.standart(
                     controller: searchViewModel.searchTextController,
-                    hintText: "Ara",
+                    hintText: LangCode().search.tr(),
                     onChanged: (query) {
                       searchViewModel.onSearchChanged(query);
                     },
@@ -71,7 +71,7 @@ class SearchPage extends StatelessWidget {
                       );
                     },
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
             ),

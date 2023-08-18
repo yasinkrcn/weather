@@ -5,7 +5,7 @@ import 'package:weather/feature/bottom_nav_bar/domain/repo/bottom_navigation_inf
 import '../../../core/_core_exports.dart';
 
 class BottomNavBarViewModel extends ChangeNotifier implements BottomNavigationInfoRepository {
-  BottomNavigationBarState selectedBarState = BottomNavigationBarState.HOME;
+  BottomNavigationBarState selectedBarState = BottomNavigationBarState.SETTINGS;
   bool _isBottomBarVisible = true;
   bool isAppbarVisible = true;
 

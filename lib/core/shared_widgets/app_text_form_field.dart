@@ -220,7 +220,7 @@ class AppTextFormField extends StatelessWidget {
           contentPadding: contentPadding,
 
           hintText: hintText,
-          hintStyle: AppTextStyles.medium14W500.copyWith(color: AppColors.blackVariantGrey),
+          hintStyle: AppTextStyles.medium15W500.copyWith(color: AppColors.blackVariantGrey),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           filled: true,

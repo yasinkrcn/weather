@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:weather/core/_core_exports.dart';
 import 'package:weather/feature/home/view/page/home_page.dart';
 import 'package:weather/feature/search/view/page/search_page.dart';
@@ -70,11 +71,11 @@ extension BottomNavigationBarStateExtension on BottomNavigationBarState {
   String stateToTitle() {
     switch (this) {
       case BottomNavigationBarState.HOME:
-        return "Ana Sayfa";
+        return LangCode().home.tr();
       case BottomNavigationBarState.SEARCH:
-        return "Ara";
+        return LangCode().search.tr();
       case BottomNavigationBarState.SETTINGS:
-        return "Ayarlar";
+        return LangCode().settings.tr();
     }
   }
 

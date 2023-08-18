@@ -1,4 +1,3 @@
-import 'package:flutter/rendering.dart';
 import '../../../core/_core_exports.dart';
 
 class HomeViewModel extends ChangeNotifier {
@@ -74,4 +73,9 @@ class HomeViewModel extends ChangeNotifier {
       sl<BottomNavBarViewModel>().directionScroll(scrollController: scrollController);
     });
   }
+
+  // List<WeatherOtherDetailsModel> weatherOtherDetailList = [
+
+  //   WeatherOtherDetailsModel(assetPath: AssetPaths().humidity, text: "Nem", description: "%${weatherData.data?.main?.humidity}",)
+  // ];
 }

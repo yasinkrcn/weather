@@ -1,0 +1,18 @@
+{
+    "home": "Page d'accueil",
+    "search": "Recherche",
+    "settings": "Paramètres",
+    "update_time": "Date de mise à jour",
+    "humidity": "Humidité",
+    "wind": "Vent",
+    "sun_rise": "Levé du soleil",
+    "sun_set": "Coucher du soleil",
+    "language": "Langue",
+    "select_language": "Sélectionner la langue",
+    "log_out": "Se déconnecter",
+    "yes": "Oui",
+    "no": "Non",
+    "username": "Nom d'utilisateur",
+    "do_you_want_to_exit_the_application": "Souhaitez-vous quitter l'application?",
+    "continue": "Devam Et"
+}

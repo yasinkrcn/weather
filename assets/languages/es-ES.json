@@ -1,0 +1,18 @@
+{
+    "home": "Página de inicio",
+    "search": "Buscar",
+    "settings": "Configuración",
+    "update_time": "Fecha de actualización",
+    "humidity": "Humedad",
+    "wind": "Viento",
+    "sun_rise": "Amanecer",
+    "sun_set": "Atardecer",
+    "language": "Idioma",
+    "select_language": "Seleccionar idioma",
+    "log_out": "Cerrar sesión",
+    "yes": "Sí",
+    "no": "No",
+    "username": "Nombre de usuario",
+    "do_you_want_to_exit_the_application": "¿Deseas salir de la aplicación?",
+    "continue": "Devam Et"
+}

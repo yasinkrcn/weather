@@ -23,6 +23,13 @@ class AssetPaths {
 
   //*PNG
 
+  String get turkeyFlag => _toPNG("turkey");
+  String get italyFlag => _toPNG("italy");
+  String get spainFlag => _toPNG("spain");
+  String get germanyFlag => _toPNG("germany");
+  String get franceFlag => _toPNG("france");
+  String get unitedStatesFlag => _toPNG("united_states");
+
   //*JSON
   String get notFound => _toJSON("not_found");
   String get searchSomething => _toJSON("search_something");

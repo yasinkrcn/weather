@@ -1,0 +1,18 @@
+{
+    "home": "Homepage",
+    "search": "Search",
+    "settings": "Settings",
+    "update_time": "Update Date",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "sun_rise": "Sunrise",
+    "sun_set": "Sunset",
+    "language": "Language",
+    "select_language": "Select Language",
+    "log_out": "Log Out",
+    "yes": "Yes",
+    "no": "No",
+    "username": "Username",
+    "do_you_want_to_exit_the_application": "Do you want to exit the application?",
+    "continue": "Continue"
+}

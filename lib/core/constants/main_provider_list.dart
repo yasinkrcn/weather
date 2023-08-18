@@ -1,6 +1,7 @@
 import 'package:provider/single_child_widget.dart';
 // import 'package:weather/feature/bottom_nav_bar/vie.dart';
 import 'package:weather/feature/search/view_model/search_view_model.dart';
+import 'package:weather/feature/settings/view_model/language_view_model.dart';
 import '../_core_exports.dart';
 
 class MainProviderList {
@@ -9,6 +10,7 @@ class MainProviderList {
     ChangeNotifierProvider(create: (_) => sl<BottomNavBarViewModel>()),
     ChangeNotifierProvider(create: (_) => sl<HomeViewModel>()),
     ChangeNotifierProvider(create: (_) => sl<SearchViewModel>()),
+    ChangeNotifierProvider(create: (_) => sl<LanguageViewModel>()),
   ];
 
   /// This method returns the provider list that should stand up at the beginning of the application.
