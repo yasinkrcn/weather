@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:weather/core/_core_exports.dart';
-import 'package:weather/core/constants/localization/lang_code.dart';
 import 'package:weather/feature/settings/view/widgets/logout_bottom_sheet.dart';
 import 'package:weather/feature/settings/view/widgets/setting_items.dart';
 import 'package:weather/feature/settings/view_model/language_view_model.dart';
@@ -28,8 +27,8 @@ class SettingsPage extends StatelessWidget {
                   size: 72,
                 )),
             AppSizedBox.h(16),
-            Text(
-              LangCode().username.tr(),
+            AppText(
+              context.tr(LangCode().username),
               style: AppTextStyles.medium18W500White,
             ),
             AppSizedBox.h(16),

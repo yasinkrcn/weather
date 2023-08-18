@@ -24,7 +24,6 @@ class SearchViewModel extends ChangeNotifier {
   }
 
   Future<void> fetchSearchedData() async {
-    searchedData.data = null;
     searchedData = UIState.loading();
     notifyListeners();
 
@@ -38,7 +37,6 @@ class SearchViewModel extends ChangeNotifier {
         res.fold((l) {
           searchedData = UIState.error(l.errorMessage);
           notifyListeners();
-          showCustomMessenger(CustomMessengerState.ERROR, l.errorMessage);
         }, (data) {
           searchedData = UIState.success(data);
 

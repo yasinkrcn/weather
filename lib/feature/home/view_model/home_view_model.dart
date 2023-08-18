@@ -1,4 +1,5 @@
 import '../../../core/_core_exports.dart';
+import '../domain/entities/weather_other_details_model.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({
@@ -23,7 +24,6 @@ class HomeViewModel extends ChangeNotifier {
       res.fold((l) {
         weatherData = UIState.error(l.errorMessage);
         notifyListeners();
-        // showCustomMessenger(CustomMessengerState.ERROR, l.errorMessage);
       }, (data) {
         weatherData = UIState.success(data);
 
@@ -43,7 +43,6 @@ class HomeViewModel extends ChangeNotifier {
       res.fold((l) {
         weatherHourlyData = UIState.error(l.errorMessage);
         notifyListeners();
-        // showCustomMessenger(CustomMessengerState.ERROR, l.errorMessage);
       }, (data) {
         weatherHourlyData = UIState.success(data);
 
@@ -61,6 +60,12 @@ class HomeViewModel extends ChangeNotifier {
 
   double previousScrollPosition = 0;
 
+  void initScrollController() {
+    scrollController = ScrollController(initialScrollOffset: previousScrollPosition);
+
+    scrollListener();
+  }
+
   void disposeScrollController() {
     scrollController.dispose;
   }
@@ -69,13 +74,31 @@ class HomeViewModel extends ChangeNotifier {
     scrollController.addListener(() {
       previousScrollPosition = scrollController.position.pixels;
 
-      // print(scrollController.position.pixels);
       sl<BottomNavBarViewModel>().directionScroll(scrollController: scrollController);
     });
   }
 
-  // List<WeatherOtherDetailsModel> weatherOtherDetailList = [
-
-  //   WeatherOtherDetailsModel(assetPath: AssetPaths().humidity, text: "Nem", description: "%${weatherData.data?.main?.humidity}",)
-  // ];
+  List<WeatherOtherDetailsModel> weatherSpecifies(WeatherModel weatherData) {
+    return [
+      WeatherOtherDetailsModel(
+        assetPath: AssetPaths().humidity,
+        text: LangCode().humidity,
+        description: "%${weatherData.main?.humidity}",
+      ),
+      WeatherOtherDetailsModel(
+        assetPath: AssetPaths().windy,
+        text: LangCode().wind,
+        description: "${weatherData.wind?.speed} km/s",
+      ),
+      WeatherOtherDetailsModel(
+          assetPath: AssetPaths().sunrise,
+          text: LangCode().sunrise,
+          description: IntToFormattedTime(weatherData.sys!.sunrise!).toFormattedTime()),
+      WeatherOtherDetailsModel(
+        assetPath: AssetPaths().sunset,
+        text: LangCode().sunset,
+        description: IntToFormattedTime(weatherData.sys!.sunset!).toFormattedTime(),
+      ),
+    ];
+  }
 }

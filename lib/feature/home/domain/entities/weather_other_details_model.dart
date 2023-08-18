@@ -1,6 +1,6 @@
 class WeatherOtherDetailsModel {
   final String assetPath;
-  final String text;
+  late String text;
   final String description;
   WeatherOtherDetailsModel({
     required this.assetPath,

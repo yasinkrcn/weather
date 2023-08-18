@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:weather/feature/home/view/widgets/shimmer_loading.dart';
-import 'package:weather/feature/search/view/widgets/weather_other_things.dart';
+import 'package:weather/feature/home/view/widgets/weather_other_things.dart';
 import '../../../../core/_core_exports.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,17 +14,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
-    sl<HomeViewModel>().scrollController =
-        ScrollController(initialScrollOffset: sl<HomeViewModel>().previousScrollPosition);
-
-    sl<HomeViewModel>().scrollListener();
+    sl<HomeViewModel>().initScrollController();
   }
 
   @override
   void dispose() {
     sl<HomeViewModel>().disposeScrollController();
-
     super.dispose();
   }
 
@@ -100,9 +95,15 @@ class _HomePageState extends State<HomePage> {
                                 shrinkWrap: true,
                                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2, childAspectRatio: 0.85),
-                                itemCount: otherWeatherInfos.length,
+                                itemCount: homeViewModel.weatherSpecifies(weather).length,
                                 itemBuilder: (context, index) {
-                                  return otherWeatherInfos[index];
+                                  var otherWeatherInfos = homeViewModel.weatherSpecifies(weather)[index];
+
+                                  return WeatherOtherThings(
+                                    asset: otherWeatherInfos.assetPath,
+                                    text: otherWeatherInfos.text,
+                                    info: otherWeatherInfos.description,
+                                  );
                                 },
                               )
                             ],
