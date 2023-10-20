@@ -2,6 +2,11 @@
 
 Weather App - https://openweathermap.org/api
 
+## Video
+
+https://github.com/yasinkrcn/weather/assets/57758337/fec0d58c-6c2f-4262-bf38-3c19d91c9fb4
+
+
 ## Screens
 
 <img src='https://github.com/yasinkrcn/weather/assets/57758337/d44d792e-6205-4a69-a00f-c765061ee5ef' width="400" ></img>
